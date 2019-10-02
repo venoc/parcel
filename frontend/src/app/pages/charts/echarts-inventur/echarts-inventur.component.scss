@@ -1,0 +1,20 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  ngx-echarts-inventur-pie,
+  ngx-echarts-inventur-bar,
+  ngx-echarts-inventur-line,
+  ngx-echarts-inventur-multiple-xaxis,
+  ngx-echarts-inventur-area-stack,
+  ngx-echarts-inventur-bar-animation,
+  ngx-echarts-inventur-radar {
+    display: block;
+    height: nb-theme(card-height-medium);
+    width: 100%;
+  }
+
+  /deep/ .echart {
+    height: 100%;
+    width: 100%;
+  }
+}

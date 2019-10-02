@@ -1,0 +1,63 @@
+<nb-card>
+  <nb-card-header>
+    Orte Liste
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table 
+    [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (createConfirm)="onCreateConfirm($event)"(editConfirm)="onSaveConfirm($event)">
+    </ng2-smart-table>
+    
+  </nb-card-body>
+ 
+</nb-card>
+<div class="row">
+ 	<div class="col-xxxl-6 col-md-6">
+<nb-card >
+	<nb-card-header>
+   Robotino
+  </nb-card-header>
+	<nb-card-body>
+		<div class="row">
+			<div class="col-md-2">
+				<button class="btn btn-success btn-icon" (click)="receiveRobotinoData()">
+		       		<i class="ion-arrow-shrink"></i>
+		    	</button>
+	    	</div>
+	    	<div class="col-md-2">
+	    		X: {{robotino.x}}
+	    	</div>
+	    	<div class="col-md-2">
+	    		Y: {{robotino.y}}
+	    	</div>
+	    </div>
+
+	</nb-card-body>
+</nb-card>
+</div>
+ <div class="col-xxxl-6 col-md-6">
+ 		<nb-card>
+	<nb-card-header>
+   Benutzer-Tag
+  </nb-card-header>
+	<nb-card-body>
+		<div class="row">
+			<div class="col-md-2">
+				<button class="btn btn-success btn-icon" (click)="receiveTagData()">
+		       		<i class="ion-arrow-shrink"></i>
+		    	</button>
+	    	</div>
+	    	<div class="col-md-2">
+	    		X: {{tag.x}}
+	    	</div>
+	    	<div class="col-md-2">
+	    		Y: {{tag.y}}
+	    	</div>
+	    </div>
+
+	</nb-card-body>
+</nb-card>
+</div>
+</div>
+
+

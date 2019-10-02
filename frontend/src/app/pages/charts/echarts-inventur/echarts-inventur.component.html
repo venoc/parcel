@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-lg-4">
+    <nb-card>
+      <nb-card-header>Schwarzes Teil</nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-inventur-pie [teil]="1"></ngx-echarts-inventur-pie>
+         <button class="btn btn-success" type="button" (click)="auffuellen(1)">Auffüllen</button>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-4">
+    <nb-card>
+      <nb-card-header>Rotes Teil</nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-inventur-pie [teil]="2"></ngx-echarts-inventur-pie>
+        <button class="btn btn-success" type="button" (click)="auffuellen(2)">Auffüllen</button>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-4">
+    <nb-card>
+      <nb-card-header>Silbernes Teil</nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-inventur-pie [teil]="3"></ngx-echarts-inventur-pie>
+        <button class="btn btn-success" type="button" (click)="auffuellen(3)">Auffüllen</button>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        Entnahmen
+      </nb-card-header>
+        <nb-card-body #halle_container>
+          <bubblemap></bubblemap>
+      </nb-card-body>
+  </nb-card> 
+</div> 
+<!--
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Aktivität</nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-inventur-bar></ngx-echarts-inventur-bar>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header></nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-inventur-line></ngx-echarts-inventur-line>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Multiple x-axis</nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-inventur-multiple-xaxis></ngx-echarts-inventur-multiple-xaxis>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Area Stack</nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-inventur-area-stack></ngx-echarts-inventur-area-stack>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Bar Animation</nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-inventur-bar-animation></ngx-echarts-inventur-bar-animation>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Radar</nb-card-header>
+      <nb-card-body>
+        <ngx-echarts-inventur-radar></ngx-echarts-inventur-radar>
+      </nb-card-body>
+    </nb-card>
+  </div>
+-->
+</div>

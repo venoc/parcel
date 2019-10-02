@@ -1,0 +1,14 @@
+<nb-card>
+<nb-card-header>Teile aus Lager holen</nb-card-header>
+  <nb-card-body >
+  	<div class="tagbutton_container">
+        <div class="dropdown btn-group" ngbDropdown>
+      <button type="button" class="btn btn-primary">{{part.name}}</button>
+      <button type="button" class="btn btn-primary" ngbDropdownToggle ></button>
+      <ul class="dropdown-menu" ngbDropdownMenu>
+        <li class="dropdown-item" *ngFor="let item of colors;"(click)="part =item">{{item.name}}</li>
+      </ul>
+    </div>
+</div>
+  </nb-card-body>
+</nb-card>

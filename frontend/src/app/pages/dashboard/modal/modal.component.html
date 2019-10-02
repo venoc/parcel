@@ -1,0 +1,55 @@
+<div class="modal-header">
+      <span>{{ modalHeader }}</span>
+      <button class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+  {{ modalContent }}
+    <div [(ngModel)]="dividedButtonGroupOne" ngbRadioGroup
+         class="btn-group btn-group-toggle btn-divided-group btn-outline-divided-group btn-group-full-width col-md-12" style="margin-top: 10px;">
+      <label ngbButtonLabel class="btn btn-outline-primary ">
+        <input ngbButton type="radio" value=7> 7
+      </label>
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input ngbButton type="radio" value=8>8
+      </label>
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input ngbButton type="radio" value=9> 9
+      </label>
+  </div>
+       <div [(ngModel)]="dividedButtonGroupOne" ngbRadioGroup
+         class="btn-group btn-group-toggle btn-divided-group btn-outline-divided-group btn-group-full-width col-md-12" style="margin-top: 10px;">
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input ngbButton type="radio" value=4>4
+      </label>
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input ngbButton type="radio" value=5> 5
+      </label>
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input ngbButton type="radio" value=6> 6
+      </label>
+  </div>
+       <div [(ngModel)]="dividedButtonGroupOne" ngbRadioGroup
+         class="btn-group btn-group-toggle btn-divided-group btn-outline-divided-group btn-group-full-width col-md-12" style="margin-top: 10px;">
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input ngbButton type="radio" value=1>1
+      </label>
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input ngbButton type="radio" value=2> 2
+      </label>
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input ngbButton type="radio" value=3> 3
+      </label>
+    </div>
+    <div [(ngModel)]="dividedButtonGroupOne" ngbRadioGroup
+         class="btn-group btn-group-toggle btn-divided-group btn-outline-divided-group btn-group-full-width col-md-12" style="margin-top: 10px;">
+      <label ngbButtonLabel class="btn btn-outline-primary">
+        <input ngbButton type="radio" value=0>0
+      </label>
+    </div>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-md btn-success" (click)="closeModal()">Bestätigen</button>
+</div>

@@ -1,0 +1,15 @@
+<nb-card>
+  <nb-card-header>Vordefinierte Koordinaten</nb-card-header>
+  <nb-card-body>
+    <div class="tagbutton_container">
+      <button type="button" class="btn btn-success" (click)="httpSendTag()">BenutzerTag</button>
+    </div>
+    <div class="dropdown btn-group" ngbDropdown>
+      <button type="button" class="btn btn-primary" (click)="httpSend();">{{ort}}</button>
+      <button type="button" class="btn btn-primary" ngbDropdownToggle (click)="checkPositions()"></button>
+      <ul class="dropdown-menu" ngbDropdownMenu>
+        <li class="dropdown-item" *ngFor="let obj of position_data" (click)="ort=obj.name; ort_obj = obj;" >{{obj.name}}</li>
+      </ul>
+    </div>
+  </nb-card-body>
+</nb-card>

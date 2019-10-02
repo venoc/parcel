@@ -1,0 +1,27 @@
+<nb-card>
+<nb-card-header>Manuelle Steuerung</nb-card-header>
+  <nb-card-body class="row">
+        <div class="col-md-9 no_padding">
+        <div class="input-group">
+          <span class="input-group-addon success">X</span>
+          <input type="number" class="form-control" placeholder="Centimeter"  [(ngModel)] = "data.x_value"/>
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon success">Y</span>
+          <input type="number" class="form-control" placeholder="Centimeter" [(ngModel)] = "data.y_value"/> 
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon success">&#966;</span>
+          <input type="number" class="form-control" placeholder="Degree" [(ngModel)] = "data.phi_value"/> 
+        </div>
+      </div>
+        <div class="col-md-3 no_padding">
+          <button class="btn btn-success" (click)="httpSend()">
+              Send
+            </button>
+            <button class="btn btn-danger" (click)="httpBreak()" >
+              {{button}}
+            </button>
+        </div>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,23 @@
+
+<nb-card>
+  <nb-card-header>
+    Letzte Ziele
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table 
+    [settings]="settings" [source]="source" >
+    </ng2-smart-table>
+    <div class="dropdown ghost-dropdown"  placement="top" ngbDropdown>
+      <button class="btn btn-primary" type="button" ngbDropdownToggle (click)="loadData();">{{number}}</button>
+      <ul class="dropdown-menu" ngbDropdownMenu>
+        <li class="dropdown-item" *ngFor="let obj of numbers" (click)="number = obj; loadData()" >{{obj}}</li>
+      </ul>
+    </div>
+    
+  </nb-card-body>
+ 	
+</nb-card>
+
+
+

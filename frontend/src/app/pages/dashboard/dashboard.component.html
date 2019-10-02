@@ -1,0 +1,61 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<div class="row">
+<div class="col-xxxl-6 col-md-6" *ngFor="let p of unefficentParcels">
+  <nb-card >
+  <nb-card-header>Parcel {{p.parcel.id}}</nb-card-header>
+    <nb-card-body >
+      <button class="btn btn-success col-md-6" (click)="gbps(true, p.parcel.id)"  *ngIf="p.edit == 0">ADD TO GBPS</button><button class="btn btn-danger col-md-6" (click)="gbps(false, p.parcel.id)" *ngIf="p.edit == 0">NO GBPS</button>
+      <h3><span style="color: #E75867"  *ngIf="p.edit == 2">Parcel added to GBPS</span></h3>
+      <h3><span style="color: #E75867"  *ngIf="p.edit == 1">Parcel treated normally</span></h3>
+      <p></p>
+      <p>Destination: <span style="color: #E75867">{{p.parcel.destination.x}} {{p.parcel.destination.x}}</span></p>
+      <p>Size: <span style="color: #E75867">{{p.parcel.size}}g</span></p>
+      <p>Arrival: <span style="color: #E75867">{{p.parcel.arrivalTime}}</span></p>
+    </nb-card-body>
+  </nb-card>
+</div>
+</div>
+
+<div class="row">
+<div class="col-xxxl-12 col-md-12">
+<nb-card>
+  <nb-card-header>
+    Open parcel jobs:
+  </nb-card-header>
+
+  <nb-card-body>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Address</th>
+      <th scope="col">Accepted</th>
+      <th scope="col">Arrival Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let b of blockchainParcels">
+      <th scope="row">{{b.id}}</th>
+      <td>{{b.addr}}</td>
+      <td>{{b.accepted}}</td>
+      <td>{{b.arrivalTime}}</td>
+    </tr>
+  </tbody>
+</table>
+
+  </nb-card-body>
+
+</nb-card>
+</div>
+</div>
+<div class="row">
+<div class="col-xxxl-12 col-md-12">
+  <nb-card>
+  <nb-card-header>Metamask Account: {{myAccount.addr}}</nb-card-header>
+    <nb-card-body >
+      <h3><span style="color: #E75867">{{myAccount.balance}}</span> Ether</h3>
+
+    </nb-card-body>
+  </nb-card>
+</div>
+</div>

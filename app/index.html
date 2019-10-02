@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ridesharing</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+<script src="https://kit.fontawesome.com/3549ef43cd.js"></script>
+<script src="./web3.min.js"></script>
+  </head>
+
+  <script>
+  if (typeof web3 == 'undefined') {
+    web3 = new Web3(web3.currentProvider);
+    console.log("Metamask");
+  } else {
+    // set the provider you want from Web3.providers
+    web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545")); //http://35.159.31.35:8545
+    console.log("No Metamask");
+    console.log(web3.eth.accounts[0]);
+    console.log(web3.eth.getBalance(web3.eth.accounts[0]));
+  }
+</script>
+
+<script>
+  var contractAddress = "###CONTRACT-ADDRESS###";
+  const contractABI = [ { "constant": false, "inputs": [ { "name": "_index", "type": "uint256" }, { "name": "_senderLongitude", "type": "string" }, { "name": "_senderLatitude", "type": "string" }, { "name": "_recipientLongitude", "type": "string" }, { "name": "_recipientLatitude", "type": "string" } ], "name": "setCoordinates", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "uint256" } ], "name": "parcelStorage", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "ServiceProviderContract", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "index", "type": "uint256" } ], "name": "removeParcel", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_index", "type": "uint256" }, { "name": "_recipientFirstName", "type": "string" }, { "name": "_recipientLastName", "type": "string" }, { "name": "_recipientStreet", "type": "string" }, { "name": "_recipientStreetNr", "type": "string" }, { "name": "_recipientPostcode", "type": "string" }, { "name": "_recipientTown", "type": "string" }, { "name": "_recipientCountry", "type": "string" } ], "name": "setReceiver", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_id", "type": "uint256" }, { "name": "_date", "type": "string" }, { "name": "_senderLongitude", "type": "string" }, { "name": "_senderLatitude", "type": "string" }, { "name": "_recipientLongitude", "type": "string" }, { "name": "_recipientLatitude", "type": "string" } ], "name": "addParcel", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_index", "type": "uint256" }, { "name": "_length", "type": "uint256" }, { "name": "_height", "type": "uint256" }, { "name": "_width", "type": "uint256" }, { "name": "_dangerous", "type": "bool" }, { "name": "_fragile", "type": "bool" }, { "name": "_tempSensitive", "type": "bool" } ], "name": "setParcelProperties", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "i", "type": "uint256" } ], "name": "getParcelStorage", "outputs": [ { "name": "", "type": "uint256" }, { "name": "", "type": "address" }, { "name": "", "type": "string" }, { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_index", "type": "uint256" } ], "name": "triggerDelivered", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_index", "type": "uint256" }, { "name": "_senderFirstName", "type": "string" }, { "name": "_senderLastName", "type": "string" }, { "name": "_senderStreet", "type": "string" }, { "name": "_senderStreetNr", "type": "string" }, { "name": "_senderPostcode", "type": "string" }, { "name": "_senderTown", "type": "string" }, { "name": "_senderCountry", "type": "string" } ], "name": "setSender", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "i", "type": "uint256" } ], "name": "getParcelLocation", "outputs": [ { "name": "", "type": "uint256" }, { "name": "", "type": "address" }, { "name": "", "type": "string" }, { "name": "", "type": "string" }, { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "addr", "type": "address" } ], "name": "changeLastMileStart", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_index", "type": "uint256" }, { "name": "_ownerAddress", "type": "address" } ], "name": "setOwnerAddress", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "arrayIndex", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "inputs": [], "payable": false, "stateMutability": "nonpayable", "type": "constructor" } ];
+  var contract = web3.eth.contract(contractABI).at(contractAddress);
+  console.log(contract);
+  var sendingAccount = web3.eth.accounts[0];
+  </script>
+  <body>
+    <!--Navbar-->
+<nav class="navbar navbar-light " style="background-color: #E75867">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#" style="color: #ffffff"><b>Ridesharing App</b></a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+    aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span style="color: white"><i
+        class="fas fa-bars fa-1x"></i></span></button>
+
+  <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Who we are</a>
+        </li>
+      </ul>
+      <!-- Links -->
+
+    </div>
+    <!-- Collapsible content -->
+
+  </nav>
+  <div  id="content"  style="font-size:1rem; text-align: center;min-width: 15rem;  min-height: 11rem;" >
+    <h4 style="color: #E75867">Parcel</h4>
+    Help making Zurich a greener place by dopping off a parcel on your way and earn 5 CHF.
+      <div class="col-12">
+        <br>
+    <div class="row" >
+      <button  type="button" class="btn btn-outline-danger btn-sm" onClick="decline()">Decline</button>
+    <button type="button" class="btn btn-outline-danger btn-sm" onClick="accept()">Accept</button>
+  </div></div>
+  </div>
+  </div>
+<!--/.Navbar-->
+    <div id="map"></div>
+    <script>
+      var map;
+      var Popup;
+      var popup;
+      var markers = [];
+      var activeMarker;
+      var directionsDisplay ;
+      var directionsService;
+      var features = [];
+      var parcels= [];
+      window.onload  = function(){
+        getParcelCount().then((res)=> {
+      if(res != null){
+        getParcels(res,(res)=> {
+          if(res != null){
+            parcels = res;
+          }
+          });
+      }
+      }, (rej)=>{console.log(rej)});
+      }
+      function getParcelCount() {
+        return new Promise((resolve, reject) => {
+
+          contract.arrayIndex({from: sendingAccount}, (error, result) => {
+
+            if (error == true) {
+               console.log("Error: "+ error)
+               console.log("Account: "+ result)
+            }
+            else {
+
+                if (error === null) {
+                  console.log("Index:"+result);
+                        return resolve(result);
+                    } else {
+                        return reject("error!");
+                    }
+
+            }
+          });
+        });
+    }
+    function getParcels(count , res) {
+
+          let array = [];
+
+          for(let i= 0; i < count; i++){
+
+            contract.getParcelLocation(i, {from: sendingAccount}, (error, result) => {
+              console.log(result[2] );
+
+              if (error == true) {
+                 console.log("Error: "+ error)
+                 console.log("Account: "+ res)
+              }
+
+              else {
+                  if (error == null) {
+                          if( result[4]== false){
+                            parcels.push({id: result[0], addr: result[1], lat: parseFloat(result[2]) , lnd: parseFloat(result[3])});
+                            addFeature(result[1], parseFloat(result[2]) , parseFloat(result[3]));
+                            initMap();
+                          }
+                          res(array);
+
+                      }
+              }
+            });
+          }
+
+    }
+    function addFeature(addr, x ,y ){
+      console.log(x);
+      features.push({
+        position: new google.maps.LatLng(x, y),
+        type: 'parcel',
+        pos: {lat: x, lng: y},
+        addr: addr,
+      });
+    }
+      function initMap() {
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        directionsService = new google.maps.DirectionsService;
+        map = new google.maps.Map(
+            document.getElementById('map'),
+            {center: new google.maps.LatLng(47.366091, 8.538849), zoom: 16});
+        directionsDisplay.setMap(map);
+        calculateAndDisplayRoute(directionsService, directionsDisplay, []);
+        /* document.getElementById('mode').addEventListener('change', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });*/
+        var iconBase =
+            '';
+
+        var icons = {
+          parcel: {
+            icon: iconBase + './marker.png',
+
+          },
+          library: {
+            icon: iconBase + 'library_maps.png'
+          },
+          info: {
+            icon: iconBase + 'info-i_maps.png'
+          }
+        };
+
+      /*  features = [
+           {
+            position: new google.maps.LatLng(47.369137, 8.539925),
+            type: 'parcel',
+            pos: {lat: 47.369137, lng: 8.539925},
+            addr: 0x00,
+          }, {
+            position: new google.maps.LatLng(47.366608, 8.537962),
+            type: 'parcel',
+            pos:{lat:  47.366608, lng: 8.537962},
+            addr: 0x01
+          }
+
+        ];*/
+        document.getElementById("content").style.display = "none";
+        // Create markers.
+
+        for (var i = 0; i < features.length; i++) {
+          markers[i] = new google.maps.Marker({
+            position: features[i].position,
+            icon: icons[features[i].type].icon,
+            map: map
+          });
+
+        };
+        console.log(markers);
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].addListener('click', function() {
+            Popup = createPopupClass();
+            var m = this;
+            for( var j= 0 ; j < markers.length ; j++){
+              if(m == markers[j]){
+                activeMarker = j;
+                console.log(j);
+              }
+            }
+            popup = new Popup(
+                new google.maps.LatLng(47.369137, 8.539925),
+                document.getElementById('content'));
+           popup.setMap(map);
+
+          });
+          document.getElementById("content").style.display = "none";
+        }
+      }
+      function decline(){
+      //  activeMarker.
+        document.getElementById("content").style.display = "none";
+
+      }
+      function accept(){
+        document.getElementById("content").style.display = "none";
+        console.log(activeMarker);
+        calculateAndDisplayRoute(directionsService, directionsDisplay, [{location:{lat:features[activeMarker].pos.lat, lng:features[activeMarker].pos.lng}, stopover: true}]);
+        contract.changeLastMileStart(features[activeMarker].addr,  { from: sendingAccount },(error, result) => {console.log(result);});
+      }
+      function calculateAndDisplayRoute(directionsService, directionsDisplay, waypts) {
+        var selectedMode = "DRIVING";
+        directionsService.route({
+          origin: {lat: 47.365212, lng: 8.536359},  // Haight. 47.365212, 8.536359
+          waypoints: waypts,
+          destination: {lat:47.366367, lng: 8.546530},  // Ocean Beach. 47.366367, 8.546530
+          // Note that Javascript allows us to access the constant
+          // using square brackets and a string value as its
+          // "property."
+          travelMode: google.maps.TravelMode[selectedMode]
+        }, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+      function createPopupClass() {
+  /**
+   * A customized popup on the map.
+   * @param {!google.maps.LatLng} position
+   * @param {!Element} content The bubble div.
+   * @constructor
+   * @extends {google.maps.OverlayView}
+   */
+  function Popup(position, content) {
+    this.position = position;
+    content.style.display = "block";
+    content.classList.add('popup-bubble');
+
+    // This zero-height div is positioned at the bottom of the bubble.
+    var bubbleAnchor = document.createElement('div');
+    //bubbleAnchor.classList.add('popup-bubble-anchor');
+    bubbleAnchor.appendChild(content);
+
+    // This zero-height div is positioned at the bottom of the tip.
+    this.containerDiv = document.createElement('div');
+    this.containerDiv.classList.add('popup-container');
+    this.containerDiv.appendChild(bubbleAnchor);
+
+    // Optionally stop clicks, etc., from bubbling up to the map.
+    google.maps.OverlayView.preventMapHitsAndGesturesFrom(this.containerDiv);
+  }
+  // ES5 magic to extend google.maps.OverlayView.
+  Popup.prototype = Object.create(google.maps.OverlayView.prototype);
+
+  /** Called when the popup is added to the map. */
+  Popup.prototype.onAdd = function() {
+    this.getPanes().floatPane.appendChild(this.containerDiv);
+  };
+
+  /** Called when the popup is removed from the map. */
+  Popup.prototype.onRemove = function() {
+    if (this.containerDiv.parentElement) {
+      this.containerDiv.parentElement.removeChild(this.containerDiv);
+    }
+  };
+
+  /** Called each frame when the popup needs to draw itself. */
+  Popup.prototype.draw = function() {
+    var divPosition = this.getProjection().fromLatLngToDivPixel(this.position);
+
+    // Hide the popup when it is far out of view.
+    var display =
+        Math.abs(divPosition.x) < 4000 && Math.abs(divPosition.y) < 4000 ?
+        'block' :
+        'none';
+
+
+      this.containerDiv.style.display = display;
+
+  };
+
+  return Popup;
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=###API-KEY###">
+    </script>
+
+  </body>
+</html>
