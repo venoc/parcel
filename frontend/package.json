@@ -57,7 +57,7 @@
     "intl": "1.2.5",
     "ionicons": "2.0.1",
     "leaflet": "1.2.0",
-    "mathjs": "^5.0.4",
+    "mathjs": "^7.5.1",
     "nebular-icons": "1.0.6",
     "ng2-ckeditor": "1.1.13",
     "ng2-smart-table": "1.2.2",
