@@ -70,7 +70,7 @@
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",
     "socicon": "3.0.5",
-    "tinymce": "4.5.7",
+    "tinymce": "5.10.7",
     "truffle-contract": "^4.0.20",
     "typeface-exo": "0.0.22",
     "web-animations-js": "2.2.5",
